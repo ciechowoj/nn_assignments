@@ -36,7 +36,7 @@ def plot_mat(mat, scaleIndividual=True, colorbar=False, prop=(9,16), gutters=2,
     nSamples, nChannels, r, c = mat.shape
     gr, gc =  get_grid(nSamples, (prop[0]*c, prop[1]*r))
     toPlot = np.zeros((gr*r+(gr-1)*gutters, gc*c + (gc-1)*gutters, nChannels) ) + np.NaN
-    for s in xrange(nSamples):
+    for s in range(nSamples):
         pr = s // gc
         pc = s - (pr*gc)
         small_img = mat[s,:,:,:].transpose(1,2,0)
@@ -44,6 +44,7 @@ def plot_mat(mat, scaleIndividual=True, colorbar=False, prop=(9,16), gutters=2,
             small_img = scale_fun(small_img)
         toPlot[pr*(r+gutters):pr*(r+gutters)+r,
                pc*(c+gutters):pc*(c+gutters)+c,:] = small_img
+               
     if nChannels==1:
         pyplot.imshow(toPlot[:,:,0], interpolation='nearest', **kwargs)
     else:

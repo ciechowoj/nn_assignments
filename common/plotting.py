@@ -3,6 +3,7 @@ This function contains code to images and weight matrices.
 """
 
 import numpy as np
+from numpy import *
 from matplotlib import pyplot
 
 def scale_mat(mat, lower=0., upper=1.):
@@ -44,7 +45,7 @@ def plot_mat(mat, scaleIndividual=True, colorbar=False, prop=(9,16), gutters=2,
             small_img = scale_fun(small_img)
         toPlot[pr*(r+gutters):pr*(r+gutters)+r,
                pc*(c+gutters):pc*(c+gutters)+c,:] = small_img
-               
+
     if nChannels==1:
         pyplot.imshow(toPlot[:,:,0], interpolation='nearest', **kwargs)
     else:
@@ -52,3 +53,4 @@ def plot_mat(mat, scaleIndividual=True, colorbar=False, prop=(9,16), gutters=2,
     if colorbar:
         pyplot.colorbar()
     pyplot.axis('off')
+

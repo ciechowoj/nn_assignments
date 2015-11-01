@@ -9,7 +9,8 @@ def numerical_gradient(f, X, delta=1e-4):
     R = np.zeros_like(X)
     XF = X.ravel() #get the views
     RF = R.ravel() 
-    for i in xrange(XF.shape[0]):
+
+    for i in range(XF.shape[0]):
         xold = XF[i]
         XF[i] = xold+delta
         fp, unused_grad = f(X)
@@ -17,6 +18,7 @@ def numerical_gradient(f, X, delta=1e-4):
         fn, unused_grad = f(X)
         XF[i] = xold
         RF[i] = (fp-fn)/(2*delta)
+        
     return R
 
 def check_gradient(f, X, delta=1e-4, prec=1e-6):
